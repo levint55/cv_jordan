@@ -1,10 +1,11 @@
 import React from "react";
+import foto from './image/foto.jpg';
 
 class Header extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="three wide column">image</div>
+        <div className="three wide column"><img className="ui small image center" src={foto} /></div>
         <div className="five wide column">
           <h1>Stephen Jordan</h1>
           <h2>27 November 1998</h2>
