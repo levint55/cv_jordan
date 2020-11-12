@@ -1,20 +1,25 @@
 import React from "react";
+import { connect } from "react-redux";
+import BulletList from "./BulletList";
 
-const ExperienceItem = ({experience}) => {
-  return (
-    <div>
-      <h3>{experience.title}</h3>
-      <b>
-        {experience.company} ({experience.time})
-      </b>
-      <div className="ui bulleted list">
-        {experience.description.map((desc) => {
-          return <div className="item" key={desc}>{desc}</div>;
-        })}
+const ExperienceItem = ({experiences}) => {
+  const renderedExperience = experiences.map((experience) => {
+    return (
+      <div className="item" key={experience.title}>
+        <h3>{experience.title}</h3>
+        <b>
+          {experience.company} ({experience.time})
+        </b>
+        <BulletList items={experience.descriptions} />
       </div>
-      <br/>
-    </div>
-  );
+    );
+  });
+
+  return renderedExperience;
 };
 
-export default ExperienceItem;
+const mapStateToProps = (state) => {
+  return { experiences: state.experiences };
+};
+
+export default connect(mapStateToProps)(ExperienceItem);

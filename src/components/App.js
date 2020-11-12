@@ -1,23 +1,19 @@
 import React from 'react';
-import Profile from './Profile';
+import Header from './Header';
 import DetailList from './DetailList';
-import { connect } from "react-redux";
+import './css/main.css';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="ui container">
+      <div className="ui container main">
         <div className="ui grid">
-          <Profile/>
-          <DetailList data={this.props.data}/>
+          <Header/>
+          <DetailList/>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return { data: state.data };
-};
-
-export default connect(mapStateToProps)(App);
+export default App;

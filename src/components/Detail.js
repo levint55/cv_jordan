@@ -1,65 +1,75 @@
 import React from "react";
 import EducationItem from "./EducationItem";
 import ExperienceItem from "./ExperienceItem";
+import ExpertiseItems from "./ExpertiseItems";
+import ProfileItem from "./ProfileItem";
+import SkillItems from "./SkillItems";
 
 class Detail extends React.Component {
   render() {
-    const renderedDetail = (type, content) => {
+    const renderedDetail = (type) => {
       switch (type) {
         case "Profile":
-          return <p>{content.description}</p>;
+          return (
+            <div className="row">
+              <div className="three wide column title"><h3>Profile</h3></div>
+              <div className="ten wide column">
+                <hr />
+                <ProfileItem/>
+              </div>
+            </div>
+          );
 
         case "Experience":
-          const renderedExperience = this.props.content.experience.map(
-            (experience) => {
-              return (
-                <ExperienceItem
-                  key={experience.title}
-                  experience={experience}
-                />
-              );
-            }
+          return (
+            <div className="row">
+              <div className="three wide column title"><h3>Experience</h3></div>
+              <div className="ten wide column">
+                <hr />
+                <ExperienceItem />
+              </div>
+            </div>
           );
-
-          return renderedExperience;
 
         case "Education":
-          const renderedEducation = this.props.content.education.map(
-            (education) => {
-              return (
-                <EducationItem key={education.study} education={education} />
-              );
-            }
+          return (
+            <div className="row">
+              <div className="three wide column title"><h3>Education</h3></div>
+              <div className="ten wide column">
+                <hr />
+                <EducationItem />
+              </div>
+            </div>
           );
-          return renderedEducation;
 
         case "Skills":
-          const renderedSkills = this.props.content.skills.map((skill) => {
-            return (
-              <div className="item" key={skill}>
-                {skill}
+          return (
+            <div className="row">
+              <div className="three wide column title"><h3>Skills</h3></div>
+              <div className="ten wide column">
+                <hr />
+                <SkillItems />
               </div>
-            );
-          });
-          return <div className="ui bulleted list">{renderedSkills}</div>;
+            </div>
+          );
 
-          case "Expertise in":
-            const renderedExpertise = this.props.content.expertise.map((expertise) => {
-              return (
-                <div className="item" key={expertise}>
-                  {expertise}
-                </div>
-              );
-            });
-            return <div className="ui bulleted list">{renderedExpertise}</div>;
+        case "Expertise":
+          return (
+            <div className="row">
+              <div className="three wide column title"><h3>Expertise In</h3></div>
+              <div className="ten wide column">
+                <hr />
+                <ExpertiseItems />
+              </div>
+            </div>
+          );
 
-            
         default:
           return "error";
       }
     };
 
-    return renderedDetail(this.props.type, this.props.content);
+    return renderedDetail(this.props.type);
   }
 }
 

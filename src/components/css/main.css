@@ -1,0 +1,26 @@
+.main {
+  font-size: medium;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.main i {
+  margin-bottom: 10px;
+}
+
+.main hr {
+  border: 2px solid blue;
+}
+
+.title h3 {
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.item {
+  margin-top: 20px;
+}
+
+.item h3 {
+  color: dodgerblue;
+}
